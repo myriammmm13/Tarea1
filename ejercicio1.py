@@ -29,7 +29,7 @@ def apertura_por_linea(nomArchivo):
 def apertura_por_bytes(nomArchivo):
     tiempoDuracion=time.time()
     tamLectura=4096 #cant bytes solicitados por el profesor
-    with open(nomArchivo, "rb") as a: 
+    with open(nomArchivo, "rb") as a: #se usa la "b" para poder hacer la lectura binaria ^^
          while(True):
             lectura=a.read(tamLectura)  
             if not lectura:
