@@ -1,8 +1,9 @@
 with open("large_text.txt", "w") as f:
-    for _ in range(1500000):  # ~10MB total
+    for _ in range(240000):  # ~10MB total
         f.write("The quick brown fox jumps over the lazy dog.\n")
 
 import time
+import os
 
 def apertura_por_caracter(nomArchivo):
     tiempoDuracion=time.time()
@@ -28,12 +29,19 @@ def apertura_por_linea(nomArchivo):
 def apertura_por_bytes(nomArchivo):
     tiempoDuracion=time.time()
     tamLectura=4096 #cant bytes solicitados por el profesor
-    with open(nomArchivo, "r") as a: 
-        for line in a:
-            pass 
+    with open(nomArchivo, "rb") as a: 
+         while(True):
+            lectura=a.read(tamLectura)  
+            if not lectura:
+                break
     finalTiempo=time.time()
-    print(f"La lectura del archivo linea por linea fue de {finalTiempo-tiempoDuracion} segundos")  
-
+    print(f"La lectura del archivo 4096 por 4096 fue de {finalTiempo-tiempoDuracion} segundos")  
 
 print(apertura_por_caracter("large_text.txt"))
 print(apertura_por_linea("large_text.txt"))
+print(apertura_por_bytes("large_text.txt"))
+
+
+ruta_archivo = 'large_text.txt'
+tamaño = os.path.getsize(ruta_archivo)
+print(f"El tamaño del archivo es {tamaño} bytes")
