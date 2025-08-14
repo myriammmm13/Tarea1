@@ -19,6 +19,6 @@ with open("lista.bin", "wb") as archivo_binario:
 with open("lista.bin", "rb") as archivo_binario:
     rec = pickle.load(archivo_binario)
 
-print("Lista de personas que hay en el archivo:")
+print("Estoy probando que funciona el archivo binario")
 for diccionario in rec:
     print(diccionario)
